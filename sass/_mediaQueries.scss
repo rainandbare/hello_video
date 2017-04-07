@@ -1,0 +1,505 @@
+@media only screen and (min-width:1100px){
+
+body{
+	background: $blue;
+}
+.doNotMove{
+	overflow: hidden;
+}
+
+h2, h4{
+	font-family: $block;
+	text-transform: uppercase;
+}
+header#teaser{
+	height: 100vh;
+}
+
+header#teaser #logo{
+	padding-top: 25vh;
+	font-family: $block;
+	text-transform: uppercase;
+	transition: 2s all ease;
+	width: 875px;
+	margin-right: calc(50% - 425px);
+	text-align: right;
+	float: right;
+	clear: both;
+	button {
+		color: $orange;
+		position: relative;
+		top: 51px;
+		left: 51px;
+		background: none;
+		padding: 0px 80px 60px 0px;
+		border: none;
+		outline: none;
+		font-size: 180px;
+		text-shadow: 0px 0px 0 #221E20;
+		transition: all 982ms ease;
+	}
+}
+
+header#teaser #logo button.welcome:hover, header#teaser #logo button.welcome.out {
+	text-shadow:0px 0px 0 #221E20,
+					1px 1px 0 #221E20,
+					2px 2px 0 #221E20,
+					3px 3px 0 #221E20,
+					4px 4px 0 #221E20,
+					5px 5px 0 #221E20,
+					6px 6px 0 #221E20,
+					7px 7px 0 #221E20,
+					8px 8px 0 #221E20,
+					9px 9px 0 #221E20,
+					10px 10px 0 #221E20,
+					11px 11px 0 #221E20,
+					12px 12px 0 #221E20,
+					13px 13px 0 #221E20,
+					14px 14px 0 #221E20,
+					15px 15px 0 #221E20,
+					16px 16px 0 #221E20,
+					17px 17px 0 #221E20,
+					18px 18px 0 #221E20,
+					19px 19px 0 #221E20, 
+					20px 20px 0 #221E20,
+					21px 21px 0 #221E20,
+					22px 22px 0 #221E20,
+					23px 23px 0 #221E20,
+					24px 24px 0 #221E20,
+					25px 25px 0 #221E20,
+					26px 26px 0 #221E20,
+					27px 27px 0 #221E20,
+					28px 28px 0 #221E20,
+					29px 29px 0 #221E20,
+					30px 30px 0 #221E20,
+					31px 31px 0 #221E20,
+					32px 32px 0 #221E20,
+					33px 33px 0 #221E20,
+					34px 34px 0 #221E20,
+					35px 35px 0 #221E20,
+					36px 36px 0 #221E20,
+					37px 37px 0 #221E20,
+					38px 38px 0 #221E20,
+					39px 39px 0 #221E20,
+					40px 40px 0 #221E20,
+					41px 41px 0 #221E20,
+					42px 42px 0 #221E20,
+					43px 43px 0 #221E20,
+					44px 44px 0 #221E20,
+					45px 45px 0 #221E20,
+					46px 46px 0 #221E20,
+					47px 47px 0 #221E20,
+					48px 48px 0 #221E20,
+					49px 49px 0 #221E20,
+					50px 50px 0 #221E20,
+					51px 51px 0 #221E20,
+					52px 52px 0 #221E20,
+					53px 53px 0 #221E20,
+					54px 54px 0 #221E20,
+					55px 55px 0 #221E20,
+					56px 56px 0 #221E20,
+					57px 57px 0 #221E20,
+					58px 58px 0 #221E20,
+					59px 59px 0 #221E20,
+					60px 60px 0 #221E20,
+					61px 61px 0 #221E20,
+					62px 62px 0 #221E20,
+					63px 63px 0 #221E20,
+					64px 64px 0 #221E20,
+					65px 65px 0 #221E20,
+					66px 66px 0 #221E20,
+					67px 67px 0 #221E20,
+					68px 68px 0 #221E20,
+					69px 69px 0 #221E20;
+	top: 1px;
+	left: 1px;
+}
+
+header#teaser #subheader{
+	width: 500px;
+	margin-right: calc(50% - 250px);
+	float: right;
+	top:-60px;
+	visibility: hidden;
+	position: relative;
+	transition: all 970ms ease;
+	clear: both;
+	
+}
+//transition to regular header
+header#teaser #logo button#activateSubheader.shrink, h2.bold {
+	font-size: 38px;
+	padding: 0px 5px;
+	text-shadow:0px 0px 0 #221E20,
+					1px 1px 0 #221E20,
+					2px 2px 0 #221E20,
+					3px 3px 0 #221E20,
+					4px 4px 0 #221E20,
+					5px 5px 0 #221E20,
+					6px 6px 0 #221E20,
+					7px 7px 0 #221E20,
+					8px 8px 0 #221E20,
+					9px 9px 0 #221E20,
+					10px 10px 0 #221E20,
+					11px 11px 0 #221E20,
+					12px 12px 0 #221E20,
+					13px 13px 0 #221E20,
+					14px 14px 0 #221E20,
+					15px 15px 0 #221E20,
+					16px 16px 0 #221E20,
+					17px 17px 0 #221E20,
+					18px 18px 0 #221E20,
+					19px 19px 0 #221E20, 
+					20px 20px 0 #221E20;
+}
+header#teaser #subheader.shrink{
+	top:-7px;
+	width: 135px;
+	margin-right: 58px;
+	transition: all 970ms ease;
+}
+header#teaser.shrink{
+	height: 150px;
+	position: relative;
+	top: 0px;
+	transition: all 970ms ease;
+}
+
+header#teaser #logo.shrink{
+	padding-top: 20px;
+	width: inherit;
+	margin-right: 50px;
+	transition: all 850ms ease-out;
+}
+
+header#teaser #subheader.activateSubheader{
+	visibility: visible;
+}
+
+svg{
+	width: 100%;
+}
+
+svg#hello-logo{
+    fill: white;
+    width: 40%;
+    position: relative;
+    z-index: 2;
+    left: 12px;
+}
+
+svg#mail{
+	width: 160%;
+}
+
+svg#insta{
+	width: 90%;
+	margin: 2px;
+}
+
+svg#twitter{
+	width: 110%;
+}
+
+.arrow {
+	width: 2%;
+	margin: 0 auto;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	cursor: pointer;
+}
+main{
+	padding: 80px;
+	display: none;
+}
+
+.display{
+	opacity: 1;
+}
+
+.hide {
+	display: none;
+}
+
+
+main#fullMenu{
+	flex-flow: row nowrap;
+	section#contactLogo, section#videoLogo{
+		width: 50%;
+	}
+}
+div#phone-div, div#video-div{
+	position: relative;
+	transition: top 1.5s ease, left 1.5s ease;
+}
+
+div#phone-div{
+	top: 319px;
+    left: -720px;
+}
+
+
+div#video-div{
+	top: 1111px;
+    left: -1112px;
+}
+
+
+div#phone-div.arrive{
+    top: -175px;
+    left: -30%;
+}
+
+div#video-div.arrive{
+    top: 0px;
+    left: -114%;
+}
+
+div#phone-div.flyAway{
+    top: -250px;
+    left: -480px;
+}
+
+div#video-div.flyAway {
+    top: 15%;
+    left: -25%;
+}
+
+#cell{
+    width: 135%;
+}
+
+#cassette{
+	width: 200%;
+}
+
+svg #cell:hover, svg #cassette:hover, div.closePlayer:hover, div.closeContact:hover{
+	cursor: pointer;
+}
+#text-hello{
+	display: none;
+}
+
+// svg #cell:hover  path#text-contact{
+// 	opacity: 0;
+// }
+
+svg #cassette{
+	path.shine.bottom{
+		 transform: translate(-1%, -1px);
+	}
+
+}
+svg text#We-make-videos-good {
+	cursor: pointer;
+}
+
+section#videoPlayer{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	right: -100%;
+	background: black;
+	transition: right 850ms ease-in, top 850ms ease-in;	
+	z-index: 2;
+	p {
+		color: $light;
+		font-family: $block;
+		text-transform: uppercase;
+		text-align: center;
+		padding: 10px 0px; 
+	}
+}
+
+section#videoPlayer.playerArrive{
+	right: 0px;
+}
+
+div.closePlayer{
+	width: 50px;
+    margin: 10px;
+    fill: $light;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+}
+
+div.closeContact{
+	position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 25px;
+}
+    
+.videoWrapper { 
+	// position: relative; 
+	padding-bottom: 56.25%; 
+	height: 0; 
+	overflow: hidden; 
+	max-width: 100%; 
+	height: auto; 
+	} 
+
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+section#contactInfo{
+	position: absolute;
+	top: 150%;
+	left: -50%;
+	transition: top 600ms ease-out, left 600ms ease-out;
+	div.card{
+		position: relative;
+		z-index: 1;
+		width: 550px;
+		background: white;
+		box-shadow:0px 0px 0 #221E20,
+					1px 1px 0 #221E20,
+					2px 2px 0 #221E20,
+					3px 3px 0 #221E20,
+					4px 4px 0 #221E20,
+					5px 5px 0 #221E20,
+					6px 6px 0 #221E20,
+					7px 7px 0 #221E20,
+					8px 8px 0 #221E20,
+					9px 9px 0 #221E20,
+					10px 10px 0 #221E20,
+					11px 11px 0 #221E20,
+					12px 12px 0 #221E20,
+					13px 13px 0 #221E20,
+					14px 14px 0 #221E20,
+					15px 15px 0 #221E20,
+					16px 16px 0 #221E20,
+					17px 17px 0 #221E20,
+					18px 18px 0 #221E20,
+					19px 19px 0 #221E20, 
+					20px 20px 0 #221E20,
+					21px 21px 0 #221E20,
+					22px 22px 0 #221E20,
+					23px 23px 0 #221E20,
+					24px 24px 0 #221E20,
+					25px 25px 0 #221E20,
+					26px 26px 0 #221E20,
+					27px 27px 0 #221E20,
+					28px 28px 0 #221E20,
+					29px 29px 0 #221E20,
+					30px 30px 0 #221E20,
+					31px 31px 0 #221E20,
+					32px 32px 0 #221E20,
+					33px 33px 0 #221E20,
+					34px 34px 0 #221E20,
+					35px 35px 0 #221E20,
+					36px 36px 0 #221E20,
+					37px 37px 0 #221E20,
+					38px 38px 0 #221E20,
+					39px 39px 0 #221E20,
+					40px 40px 0 #221E20,
+					41px 41px 0 #221E20,
+					42px 42px 0 #221E20,
+					43px 43px 0 #221E20,
+					44px 44px 0 #221E20,
+					45px 45px 0 #221E20,
+					46px 46px 0 #221E20,
+					47px 47px 0 #221E20,
+					48px 48px 0 #221E20,
+					49px 49px 0 #221E20,
+					50px 50px 0 #221E20;
+		padding: 50px;
+		text-align: center;
+	}
+	p.tagline{
+		font-family: $handwritten;
+		color: $red;
+		font-weight: 700;
+		font-size: 28px;
+		text-align: center;
+		padding-top: 10px;
+		padding-bottom: 20px;
+	}
+	p.paragraph {
+		font-family: $computer;
+		padding-bottom: 50px;
+		color: $dark;
+	}
+	span.underline{
+		border-bottom: 1px solid red;
+	}
+	h4:first-of-type, h2.bigger {
+		font-size: 20px;
+		padding: 10px 0px 5px 0px;
+		text-align: center;
+		span{
+			font-family: $script;
+		}
+	}
+	h2.bigger{
+		font-size: 24px;
+		br:nth-of-type(2n+1){
+			display: none;
+		}
+	}
+	h4:nth-of-type(2){
+		padding: 0px 0px 20px 0px;
+	}
+	a.hello-button{
+		font-family: $script;
+		color: white;
+		background: $red;
+		border:4px $dark solid;
+		padding: 20px;
+		text-decoration: none;
+		font-size: 24px;
+		display: block;
+		text-align: center;
+	}
+}
+section#contactInfo.contactArrive{
+	top: 10%;
+	left: 25%;
+}
+h2.bold{
+	color: $orange;
+	padding-bottom: 30px;
+	text-align: center;
+}
+
+footer{
+	position: fixed;
+	bottom: -40px;
+	width: 100%;
+	height: 40px;
+	background: #221E20;
+	color: white;
+	transition: all 1.5s ease;
+	ul{
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: flex-end;
+		padding-top: 5px;
+	}
+	svg path{
+		fill: $light;
+	}
+	li{
+		width: 30px;
+		padding: 2px;
+		margin: 0px 10px;
+	}
+}
+footer.up{
+	bottom: 0px;
+}
+div.phone-text{
+	font-family: $computer;
+	color: green;
+}
+
+
+}

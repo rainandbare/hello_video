@@ -1,0 +1,17 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
+/* TEAM */
+  Developer: Suzette McCanny 
+  Site: suzettemccany.com
+  Twitter: @suzettemccanny
+  Location: Toronto, ON
+
+/* THANKS */
+  WordPress starter theme from HackerYou - http://hackeryou.com
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: jQuery, GSAP
+  Software: WordPress
