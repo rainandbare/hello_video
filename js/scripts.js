@@ -2,6 +2,10 @@ var app = {};
 app.scrollReady = false;
 app.deactivateButton = false;
 app.ismobile = false;
+app.boxes = document.querySelectorAll('.box');
+app.people = document.querySelectorAll('.person');
+app.contactOpen = false;
+
 $(function(){
   app.init();
 });
@@ -15,6 +19,8 @@ app.init = function(){
 	app.reelGo();
 	app.contactAnimation();
 	app.resizeWindow();
+	app.folderControl();
+	app.openVideoModal();
 }
 
 app.responsive = function(){
@@ -60,7 +66,6 @@ app.handwritting = function(){
 	if (!app.ismobile){
 
 	$('button#activateSubheader').on("click", function(){
-		console.log("clicked");
 		app.action();
 		app.scrollReady = true;
 		if(!app.deactivateButton){
@@ -75,7 +80,6 @@ app.handwritting = function(){
 app.fullMenu = function(){
 
 		$('button#activateFullMenu').on("click", function(){
-			console.log("full menu clicked");
 			$('header').addClass("inCorner");
 		});
 }
@@ -126,47 +130,69 @@ app.scroll = function(){
 }
 
 app.svgsArrive = function(){
-	console.log("SVGs Arrive");
 	$("div#phone-div").addClass("arrive");
     $("div#video-div").addClass("arrive");
 }
 
 app.contactGo = function(){
 	$("svg #cell").on("click", function(){
-		console.log("contactGO");
 		$("div#phone-div").addClass("flyAway");
     	$("div#video-div").addClass("flyAway");
     	$("header#teaser.shrink").addClass("flyAway");
     	$("section#contactInfo").addClass("contactArrive");
+    	app.contactOpen = true;
 	});
 	$("div.closeContact").on("click", function(){
 		$("div#phone-div").removeClass("flyAway");
     	$("div#video-div").removeClass("flyAway");
     	$("header#teaser.shrink").removeClass("flyAway");
     	$("section#contactInfo").removeClass("contactArrive");
+    	app.contactOpen = false;
 	});
 
 }
 
 app.reelGo = function(){
-	$("svg #cassette").on("click", function(){
+	var firstClick = true;
+	var reelControl = document.getElementById('reelControl');
+	var iframe = reelControl.querySelector('iframe');
+	var reelPlayer = new Vimeo.Player(iframe);
+
+	
+		$("svg #cassette").on("click", function(){
+				handleReelArrive();
+		});
+		$("text#We-make-videos-good").on("click", function(){
+				handleReelArrive();
+		});
+	
+
+
+
+	function handleReelArrive(){
+		if(app.contactOpen){
+			return;
+		}
 		$("div#phone-div").removeClass("arrive");
     	$("div#video-div").removeClass("arrive");
     	$("section#videoPlayer").addClass("playerArrive");
-	});
-	$("text#We-make-videos-good").on("click", function(){
-		$("div#phone-div").removeClass("arrive");
-    	$("div#video-div").removeClass("arrive");
-    	$("section#videoPlayer").addClass("playerArrive");
-	});
+    	if(firstClick){
+	    	app.boxes.forEach(function(box){
+				app.makeBoxIntoCanvas(box)
+			});
+		firstClick = false;
+    	}
+		reelPlayer.play();
+	}
 	$("div.closePlayer").on("click", function(){
 	   	vimeoWrap = $('#vimeoWrap');
 	   	vimeoWrap.html( vimeoWrap.html() );
 		$("div#phone-div").addClass("arrive");
     	$("div#video-div").addClass("arrive");
     	$("section#videoPlayer").removeClass("playerArrive");
-
+		reelPlayer.pause();
 	});
+	
 }
 
 app.contactAnimation = function(){
@@ -233,7 +259,408 @@ app.resizeWindow = function(){
     //reload window to include right screen size & animations
     window.location.reload(true);
 	});
+	}	
+}
+
+app.folderControl = function(){
+	var firstClick = true;
+	$('div.folder').on('click', function(){
+		$('div.folder').removeClass('activeFolder');
+		$(this).addClass('activeFolder');
+		if($(this).hasClass('who')){
+			if(firstClick){
+				app.people.forEach(function(person){
+					app.makeBioIntoCanvas(person);
+				});
+			firstClick = false;
+			}
+		}
+	})
+}
+
+app.makeBoxIntoCanvas = function(element){;
+	// console.dir(element);
+	var body = document.getElementById('videoControl');
+
+	var imageCanvas = document.createElement('canvas');
+	var imageCanvasID = "imageCanvas" + element.id;
+	imageCanvas.setAttribute("id", imageCanvasID);
+	var imageCanvasContext = imageCanvas.getContext('2d');
+
+	var lineCanvas = document.createElement('canvas');
+	var lineCanvasID = "lineCanvas" + element.id;
+	lineCanvas.setAttribute("id", lineCanvasID);
+	var lineCanvasContext = lineCanvas.getContext('2d');
+
+	var pointLifetime = 2000;
+	var points = [];
+	
+	start();
+
+	/**
+	 * Attaches event listeners and starts the effect.
+	 */
+	function start() {
+	  element.addEventListener('mousemove', onMouseMove);
+	  window.addEventListener('resize', resizeCanvases);
+	  element.appendChild(imageCanvas);
+	  resizeCanvases();
+	  tick();
 	}
 
+	/**
+	 * Records the user's cursor position.
+	 *
+	 * @param {!MouseEvent} event
+	 */
+	function onMouseMove(event) {
+	  points.push({
+	    time: Date.now(),
+	    x: event.clientX,
+	    y: event.clientY,
+	  });
+	}
+
+	/**
+	 * Resizes both canvases to fill the window.
+	 */
+	function resizeCanvases() {
+	  imageCanvas.width = lineCanvas.width = element.clientWidth;
+	  imageCanvas.height = lineCanvas.height = element.clientHeight;
+	}
+
+	/**
+	 * The main loop, called at ~60hz.
+	 */
+	function tick() {
+	  // Remove old points
+	  points = points.filter(function(point) {
+	    var age = Date.now() - point.time;
+	    return age < pointLifetime;
+	  });
+
+	  drawLineCanvas();
+	  drawImageCanvas();
+	  requestAnimationFrame(tick);
+	}
+
+	/**
+	 * Draws a line using the recorded cursor positions.
+	 *
+	 * This line is used to mask the original image.
+	 */
+	function drawLineCanvas() {
+	  var minimumLineWidth = 60;
+	  var maximumLineWidth = 200;
+	  var lineWidthRange = maximumLineWidth - minimumLineWidth;
+	  var maximumSpeed = 50;
+
+	  // lineCanvasContext.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
+	  lineCanvasContext.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
+	  lineCanvasContext.lineCap = 'round';
+	  lineCanvasContext.shadowBlur = 30;
+	  lineCanvasContext.shadowColor = '#000';
+	  
+	  for (var i = 1; i < points.length; i++) {
+	    var point = points[i];
+	    var previousPoint = points[i - 1];
+
+	    // Change line width based on speed
+	    var distance = getDistanceBetween(point, previousPoint);
+	    var speed = Math.max(0, Math.min(maximumSpeed, distance));
+	    var percentageLineWidth = (maximumSpeed - speed) / maximumSpeed;
+	    lineCanvasContext.lineWidth = minimumLineWidth + percentageLineWidth * lineWidthRange;
+
+	    
+	    
+	    var scrollTop = body.scrollTop;
+
+		// Fade points as they age
+	    var age = Date.now() - point.time;
+	    var opacity = (pointLifetime - age) / pointLifetime;
+
+	    lineCanvasContext.strokeStyle = 'rgba(0, 0, 0, ' + opacity + ')';
+	    
+ 		
+
+    	lineCanvasContext.beginPath();
+	    lineCanvasContext.moveTo(previousPoint.x - imageCanvas.offsetLeft, previousPoint.y - imageCanvas.offsetTop + scrollTop);
+	    lineCanvasContext.lineTo(point.x - imageCanvas.offsetLeft, point.y - imageCanvas.offsetTop + scrollTop);
+	    lineCanvasContext.stroke();
+
+	  }
+	}
+
+	/**
+	 * @param {{x: number, y: number}} a
+	 * @param {{x: number, y: number}} b
+	 * @return {number} The distance between points a and b
+	 */
+	function getDistanceBetween(a, b) {
+	  return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
+	}
+
+	/**
+	 * Draws the original image, masked by the line drawn in drawLineToCanvas.
+	 */
+	function drawImageCanvas() {
+		var title = element.children[0].innerHTML.toUpperCase();
+		var director = element.children[1].innerText;
+
+	  // Emulate background-size: cover
+	  var width = imageCanvas.width;
+	  var height = imageCanvas.height;
+	  // var height = imageCanvas.width / image.naturalWidth * image.naturalHeight;
+	  
+	  // if (height < imageCanvas.height) {
+	  //   width = imageCanvas.height / image.naturalHeight * image.naturalWidth;
+	  //   height = imageCanvas.height;
+	  // }
+
+	  imageCanvasContext.clearRect(0, 0, width, height);
+	  imageCanvasContext.globalCompositeOperation = 'source-over';
+
+	  imageCanvasContext.font = '32px Langdon';
+	  imageCanvasContext.textBaseline = 'top';
+	  imageCanvasContext.fillStyle = '#211D1F';
+	  imageCanvasContext.fillRect(0, 0, width, height);
+	  imageCanvasContext.textAlign = "center";  
+	  imageCanvasContext.fillStyle = '#FFF';
+	  imageCanvasContext.fillText(title, imageCanvas.width/2, 50);
+	  imageCanvasContext.font = '22px Mark My Words';
+	  imageCanvasContext.strokeStyle = "#0072BC";
+	  imageCanvasContext.lineWidth = 2;
+	  imageCanvasContext.beginPath();
+	  imageCanvasContext.moveTo(imageCanvas.width/2 - 100, 83);
+	  imageCanvasContext.lineTo(imageCanvas.width/2 + 100, 83);
+	  imageCanvasContext.stroke();
+	  imageCanvasContext.fillText("director", imageCanvas.width/2, 125);
+	  imageCanvasContext.font = '25px Open Sans';
+	  imageCanvasContext.fillStyle = '#E48723';
+	  imageCanvasContext.fillText(director, imageCanvas.width/2, 140);
+	  // imageCanvasContext.strokeStyle = "#fff";
+	  // imageCanvasContext.strokeRect(imageCanvas.width/2 - 150, 25, 300, 180);
+
+	  //console.dir(lineCanvas)
+
+	  imageCanvasContext.globalCompositeOperation = 'destination-in';
+	  imageCanvasContext.drawImage(lineCanvas, 0, 0);
+	}
+}
+
+app.makeBioIntoCanvas = function(element){
 	
+	var imageCanvas = document.createElement('canvas');
+	var imageCanvasID = "imageCanvas" + element.id;
+	imageCanvas.setAttribute("id", imageCanvasID);
+	var imageCanvasContext = imageCanvas.getContext('2d');
+
+	var lineCanvas = document.createElement('canvas');
+	var lineCanvasID = "lineCanvas" + element.id;
+	lineCanvas.setAttribute("id", lineCanvasID);
+	var lineCanvasContext = lineCanvas.getContext('2d');
+
+	var pointLifetime = 2500;
+	var points = [];
+
+
+	var text = document.getElementById('bioText').innerText;
+	var offset = {};
+	
+
+
+	start();
+	/**
+	 * Attaches event listeners and starts the effect.
+	 */
+	function start() {
+	  element.addEventListener('mousemove', onMouseMove);
+	  window.addEventListener('resize', resizeCanvases);
+	  element.appendChild(imageCanvas);
+	  resizeCanvases();
+	  tick();
+	  
+	}
+
+	/**
+	 * Records the user's cursor position.
+	 *
+	 * @param {!MouseEvent} event
+	 */
+	function onMouseMove(event) {
+
+	  points.push({
+	    time: Date.now(),
+	    x: event.clientX,
+	    y: event.clientY,
+	  });
+	  // console.log(points)
+	}
+
+	/**
+	 * Resizes both canvases to fill the window.
+	 */
+	function resizeCanvases() {
+	  offset = $("#imageCanvas" + element.id).offset();
+	  //console.log(offset)
+	  imageCanvas.width = lineCanvas.width = element.clientWidth;
+	  imageCanvas.height = lineCanvas.height = element.clientHeight;
+	}
+	
+	/**
+	 * The main loop, called at ~60hz.
+	 */
+	function tick() {
+	  // Remove old points
+	  points = points.filter(function(point) {
+	    var age = Date.now() - point.time;
+	    return age < pointLifetime;
+	  });
+
+	  drawLineCanvas();
+	  drawImageCanvas();
+	  requestAnimationFrame(tick);
+	}
+
+	/**
+	 * Draws a line using the recorded cursor positions.
+	 *
+	 * This line is used to mask the original image.
+	 */
+	function drawLineCanvas() {
+	  var minimumLineWidth = 60;
+	  var maximumLineWidth = 150;
+	  var lineWidthRange = maximumLineWidth - minimumLineWidth;
+	  var maximumSpeed = 50;
+
+	  lineCanvasContext.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
+	  lineCanvasContext.lineCap = 'round';
+	  lineCanvasContext.shadowBlur = 30;
+	  lineCanvasContext.shadowColor = '#000';
+	  
+	  for (var i = 1; i < points.length; i++) {
+	    var point = points[i];
+	    var previousPoint = points[i - 1];
+
+	    // Change line width based on speed
+	    var distance = getDistanceBetween(point, previousPoint);
+	    var speed = Math.max(0, Math.min(maximumSpeed, distance));
+	    var percentageLineWidth = (maximumSpeed - speed) / maximumSpeed;
+	    lineCanvasContext.lineWidth = minimumLineWidth + percentageLineWidth * lineWidthRange;
+
+	    // Fade points as they age
+	    var age = Date.now() - point.time;
+	    var opacity = (pointLifetime - age) / pointLifetime;
+	    lineCanvasContext.strokeStyle = 'rgba(0, 0, 0, ' + opacity + ')';
+
+
+    	lineCanvasContext.beginPath();
+	    lineCanvasContext.moveTo(previousPoint.x - offset.left, previousPoint.y - offset.top);
+	    lineCanvasContext.lineTo(point.x - offset.left, point.y - offset.top);
+	    lineCanvasContext.stroke();
+	  }
+	}
+
+	/**
+	 * @param {{x: number, y: number}} a
+	 * @param {{x: number, y: number}} b
+	 * @return {number} The distance between points a and b
+	 */
+	function getDistanceBetween(a, b) {
+	  return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
+	}
+
+	/**
+	 * Draws the original image, masked by the line drawn in drawLineToCanvas.
+	 */
+	function drawImageCanvas() {
+	  // Emulate background-size: cover
+	  var width = imageCanvas.width;
+	  var height = imageCanvas.height;
+
+	  
+	  imageCanvasContext.clearRect(0, 0, imageCanvas.width, imageCanvas.height);
+	  imageCanvasContext.globalCompositeOperation = 'source-over';
+
+	  imageCanvasContext.font = '300 22px Open Sans';
+	  imageCanvasContext.textBaseline = 'top';
+	  imageCanvasContext.fillStyle = 'black';
+	  imageCanvasContext.fillRect(0, 0, width, height);  
+	  imageCanvasContext.fillStyle = '#FFF';
+	  //imageCanvasContext.fillText("Helloe esdkfjhsdfkj  dsfkjdhf sdfjhs dfkjh sd", 15, 15);
+
+	  function wrapText(context, text, x, y, maxWidth, lineHeight) {
+        var cars = text.split("\n");
+
+        for (var ii = 0; ii < cars.length; ii++) {
+
+            var line = "";
+            var words = cars[ii].split(" ");
+
+            for (var n = 0; n < words.length; n++) {
+                var testLine = line + words[n] + " ";
+                var metrics = context.measureText(testLine);
+                var testWidth = metrics.width;
+
+                if (testWidth > maxWidth) {
+                    context.fillText(line, x, y);
+                    line = words[n] + " ";
+                    y += lineHeight;
+                }
+                else {
+                    line = testLine;
+                }
+            }
+
+            context.fillText(line, x, y);
+            y += lineHeight;
+        }
+     }
+      wrapText(imageCanvasContext, text, 15, 15, 275, 30);
+	 
+	  imageCanvasContext.globalCompositeOperation = 'destination-in';
+	  imageCanvasContext.drawImage(lineCanvas, 0, 0);
+	}
+}
+
+
+app.openVideoModal = function(){
+
+	var boxes = document.querySelectorAll('.box');
+	boxes.forEach(function(box){
+		var id = box.id;
+		box.addEventListener('click', handleClick);
+		var close = box.querySelector('.closeModal');
+		close.addEventListener('click', function(){handleModalClick(id)})
+	 });
+
+
+	function handleClick(e){
+
+		if(e.target.tagName === "CANVAS"){
+			var targetBox = e.target.parentElement;
+			var iframe = targetBox.querySelector('iframe');
+    		var targetPlayer = new Vimeo.Player(iframe);
+			targetBox.classList.add('showModal');
+
+			var iframeArray = document.querySelectorAll('iframe');
+			iframeArray.forEach(function(singleIframe){
+				var player = new Vimeo.Player(singleIframe);
+				player.pause();
+			})
+
+			targetPlayer.play();
+			document.getElementById('mainFooter').classList.remove('up');
+		}
+	} 
+	function handleModalClick(id){
+
+		var targetBox = document.getElementById(id)
+		var iframe = targetBox.querySelector('iframe');
+		var player = new Vimeo.Player(iframe);
+		player.pause();
+		
+		targetBox.classList.remove('showModal');
+		document.getElementById('mainFooter').classList.add('up');
+	}	
 }

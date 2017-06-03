@@ -13,6 +13,8 @@ function theme_setup() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size(120, 90, true);
 	add_image_size('square', 150, 150, true);
+	add_image_size('bio', 299, 365, array( "center", "top" ));
+
 
 
 	// Add default posts and comments RSS feed links to head
@@ -57,6 +59,8 @@ function hackeryou_scripts() {
 
 	//Don't use WordPress' local copy of jquery, load our own version from a CDN instead
 	wp_deregister_script('jquery');
+
+
   wp_enqueue_script(
   	'jquery',
   	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js",
@@ -68,6 +72,14 @@ function hackeryou_scripts() {
   wp_enqueue_script(
   	'GSAP',
   	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js",
+  	false, //dependencies
+  	null, //version number
+  	true //load in footer
+  );
+
+  wp_enqueue_script(
+  	'Javascript Vimeo Embed',
+  	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://player.vimeo.com/api/player.js",
   	false, //dependencies
   	null, //version number
   	true //load in footer

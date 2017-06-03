@@ -1,4 +1,4 @@
-<footer>
+<footer id="mainFooter">
 		<ul class="social">
 			<li>
 				<a href="https://www.facebook.com/hellovideoinc/">

@@ -1,0 +1,99 @@
+.boxes{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+
+
+}
+
+.box{
+	width: 400px;
+	height: 250px;
+	margin: 10px;
+	border: 0px black solid;
+	transition: all 0.5s ease-in-out;
+	background-size: cover;
+}
+
+.box:hover{
+}
+
+div.modal{
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+
+div.closeModal{
+	width: 30px;
+    margin: 15px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+}
+
+.showModal div.modal{
+	display: block;
+}
+div#videoControl{
+	background: black;
+	padding: 15px;
+	overflow-y: scroll;
+	height: calc(100vh - 40px);
+	position: relative;
+}
+
+div.reel{
+	text-align: center;
+}
+div.photo{
+	width: 33.333%;
+	height: 250px;
+}
+.featuredWorks h2 {
+	color: white;
+    font-size: 25px;
+    font-family: Emperors Scrawl;
+    text-transform: lowercase;
+    padding: 8px 0px;
+}
+
+.videoSectionLabels{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	max-width: 850px;
+    margin: 0 auto;
+    .labelHalf{
+    	display: flex;
+    	flex-flow: row nowrap;
+    	position: relative;
+    	div.arrowUp-svg, div.arrowDown-svg{
+    		position: absolute;
+    		width: 40px;
+    	}
+    	div.arrowUp-svg{
+			top: -65px;
+    		left: -45px;
+    	}
+
+    	div.arrowDown-svg{
+    		bottom: -75px;
+    		right: -40px;
+    	}
+    	    
+		svg{
+			fill: white;
+		}
+	}
+}
+
+
+
+.featured-title, .featured-director{
+	display: none;
+}

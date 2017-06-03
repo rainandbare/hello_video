@@ -1,0 +1,215 @@
+$tabwidth: 175px;
+
+.folders{
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	position: relative;
+	width: 100%;
+}
+
+.folder{
+	background: #ADA69C;
+	width: 975px;
+	height: 475px;
+	margin: 105px 0px;
+	padding: 50px 60px;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	z-index: 1;
+	box-shadow:0px 0px 0 #221E20,
+					1px 1px 0 #221E20,
+					2px 2px 0 #221E20,
+					3px 3px 0 #221E20,
+					4px 4px 0 #221E20,
+					5px 5px 0 #221E20,
+					6px 6px 0 #221E20,
+					7px 7px 0 #221E20,
+					8px 8px 0 #221E20,
+					9px 9px 0 #221E20,
+					10px 10px 0 #221E20,
+					11px 11px 0 #221E20,
+					12px 12px 0 #221E20,
+					13px 13px 0 #221E20,
+					14px 14px 0 #221E20,
+					15px 15px 0 #221E20,
+					16px 16px 0 #221E20,
+					17px 17px 0 #221E20,
+					18px 18px 0 #221E20,
+					19px 19px 0 #221E20, 
+					20px 20px 0 #221E20;
+	h2.bold{
+		font-size: 55px;
+	}
+}
+
+.folder:before{
+	content: '';
+	width: $tabwidth;
+	height: $tabwidth;
+	background: #ADA69C;
+	display: block;
+	top: -60px;
+	position: absolute;	
+	border-top-left-radius: 10%;
+	border-top-right-radius: 19%;
+	z-index: -1;
+	font-family: $block;
+	text-align: center;
+	font-size: 35px;
+	color: $red;
+	padding-top: 20px;
+}
+
+.activeFolder, .activeFolder:before{
+	background: white;
+}
+
+.activeFolder{
+	z-index: 3;
+}
+
+
+.folder.about:before{
+	content: 'ABOUT';
+	right: ( $tabwidth + 10px )  * 2;
+}
+.folder.who:before{
+	content: 'WHO';
+	right: ( $tabwidth + 10px )  * 1;
+}
+.folder.contact:before{
+	content: 'CONTACT';
+	right: 0;
+	box-shadow:0px 0px 0 #221E20,
+					1px 0px 0 #221E20,
+					2px 0px 0 #221E20,
+					3px 0px 0 #221E20,
+					4px 0px 0 #221E20,
+					5px 0px 0 #221E20,
+					6px 0px 0 #221E20,
+					7px 0px 0 #221E20,
+					8px 0px 0 #221E20,
+					9px 0px 0 #221E20,
+					10px 0px 0 #221E20,
+					11px 0px 0 #221E20,
+					12px 0px 0 #221E20,
+					13px 0px 0 #221E20,
+					14px 0px 0 #221E20,
+					15px 0px 0 #221E20,
+					16px 0px 0 #221E20,
+					17px 0px 0 #221E20,
+					18px 0px 0 #221E20,
+					19px 0px 0 #221E20, 
+					20px 0px 0 #221E20;
+}
+
+.handwritten {
+	font-family: $script;
+	font-size: 25px;
+	color: $red;
+}
+.regText{
+	font-size: 22px;
+	font-family: $reg;
+	padding-top: 18px;
+	padding-bottom: 7px;
+	text-align: left;
+}
+
+.folder-footer{
+	color: $red;
+	font-family: $handwritten;
+	font-size: 18px;
+	position: absolute;
+	bottom: 20px;
+	text-align: center;
+	width: 100%;
+	right: 0;
+    left: 0;
+}
+
+.folder.who{
+	display: flex;
+	flex-direction: row wrap;
+	justify-content: space-around;
+}
+.folder.contact{
+	display: flex;
+	flex-direction: row nowrap;
+	div.info, div.contactForm{
+		width: 50%;
+	}
+	
+}
+
+// --------------------- WHO FOLDER --------------------------
+$borderWidth: 4px;
+$padding: 15px;
+
+.person{
+	position: relative;
+	width: 300px;
+	height: 365px;
+	border: $borderWidth black solid;
+	background-size: cover;
+}
+
+.person-infoLayer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background: white;
+	padding: $padding;
+	text-align: left;
+	z-index: 3;
+	div.name{
+	    text-transform: uppercase;
+	    font-family: $block;
+	    font-size: 30px;
+	    text-decoration: underline;
+	    padding-bottom: $padding;
+	}
+	div.position{
+		text-transform: lowercase;
+		font-family: $script;
+		color: $orange;
+		font-size: 20px;
+	}
+
+}
+#bioText{
+	display: none;
+}
+.stamp{
+	width: 200px;
+}
+
+
+///CONTACT FORM
+
+div.contactForm{
+	input, textarea{
+		font-size: 18px;
+		font-family: $reg;
+		padding: 12px 15px;
+		background: #BABEC5;
+		color: white;
+		border: none;
+		outline: none;
+	}
+	textarea{
+		resize: none;
+		height: 175px;
+	}
+	input[type="submit"]{
+		margin-top: 20px;
+		padding: 14px 40px 12px;
+		font-size: 28px;
+		font-family: $script;
+		background: $red;
+		border: 4px solid #272927;
+	}
+}
+

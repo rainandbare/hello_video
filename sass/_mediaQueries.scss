@@ -230,12 +230,12 @@ main#fullMenu{
 }
 div#phone-div, div#video-div{
 	position: relative;
-	transition: top 1.5s ease, left 1.5s ease;
+	transition: top 1.2s ease, left 1.2s ease;
 }
 
 div#phone-div{
-	top: 319px;
-    left: -720px;
+	top: 600px;
+    left: -800px;
 }
 
 
@@ -247,7 +247,7 @@ div#video-div{
 
 div#phone-div.arrive{
     top: -175px;
-    left: -30%;
+    left: -33%;
 }
 
 div#video-div.arrive{
@@ -266,14 +266,16 @@ div#video-div.flyAway {
 }
 
 #cell{
-    width: 135%;
+    width: 125%;
+    position: relative;
+    z-index: 3;
 }
 
 #cassette{
 	width: 200%;
 }
 
-svg #cell:hover, svg #cassette:hover, div.closePlayer:hover, div.closeContact:hover{
+svg #cell:hover, svg #cassette:hover, div.closePlayer:hover, div.closeContact:hover, svg text#We-make-videos-good{
 	cursor: pointer;
 }
 #text-hello{
@@ -289,9 +291,6 @@ svg #cassette{
 		 transform: translate(-1%, -1px);
 	}
 
-}
-svg text#We-make-videos-good {
-	cursor: pointer;
 }
 
 section#videoPlayer{
@@ -317,24 +316,24 @@ section#videoPlayer.playerArrive{
 }
 
 div.closePlayer{
-	width: 50px;
-    margin: 10px;
-    fill: $light;
+	width: 30px;
+    margin: 15px;
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 3;
 }
 
 div.closeContact{
 	position: absolute;
-    right: -8px;
-    top: -8px;
-    width: 25px;
+    left: 10px;
+    bottom: 5px;
+    width: 40px;
+    svg{
+    	transform: rotate(12deg);
+    }
 }
     
 .videoWrapper { 
-	// position: relative; 
 	padding-bottom: 56.25%; 
 	height: 0; 
 	overflow: hidden; 
@@ -420,8 +419,7 @@ section#contactInfo{
 		font-weight: 700;
 		font-size: 28px;
 		text-align: center;
-		padding-top: 10px;
-		padding-bottom: 20px;
+		padding: 10px 40px 20px;
 	}
 	p.paragraph {
 		font-family: $computer;
@@ -461,8 +459,8 @@ section#contactInfo{
 	}
 }
 section#contactInfo.contactArrive{
-	top: 10%;
-	left: 25%;
+	top: 0%;
+    left: 47%;
 }
 h2.bold{
 	color: $orange;
@@ -477,7 +475,8 @@ footer{
 	height: 40px;
 	background: #221E20;
 	color: white;
-	transition: all 1.5s ease;
+	transition: all 1s ease;
+	z-index: 3;
 	ul{
 		display: flex;
 		flex-flow: row nowrap;
@@ -500,6 +499,8 @@ div.phone-text{
 	font-family: $computer;
 	color: green;
 }
-
+::-webkit-scrollbar {
+    display: none;
+}
 
 }

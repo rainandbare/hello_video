@@ -1,6 +1,6 @@
 <?php get_header();  ?>
 
-  <header id="teaser">
+<header id="teaser">
     <section id="logo">
       <h1><button id="activateSubheader" class="welcome">HELLO VIDEO</button></h1>
     </section>
@@ -44,7 +44,7 @@
       <div id="phone-div">
         <div class="phone-text">CONTACT</div>
         <div class="phone-text">HELLO</div>
-        <svg id="cell" viewBox="-70 0 660 734" version="1.1">
+        <svg id="cell" viewBox="-70 0 734 734" version="1.1">
           <defs>
                 <linearGradient x1="13.2862873%" y1="111.842071%" x2="79.35016%" y2="-14.1481056%" id="linearGradient-1">
                     <stop stop-color="#2484C6" stop-opacity="0" offset="0%"></stop>
@@ -294,117 +294,19 @@
         </svg>
       </div>
       <section id="contactInfo">  
-        <div class="folders">
-          <div class="folder about activeFolder">
-            <h2 class="bold">Hello Video</h2>
-            <h5 class="handwritten">is</h5>
-            <p class="regText"> The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother’s keeper and the finder of lost children.</p>
-            <p class="regText">I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know </p>
-            <div class="folder-footer">We make videos good, good, good</div>
-            <div class="closeContact">  
-              <svg viewBox="0 0 150 150">
-                <path  id="downleft-arrow" fill="#000000" d="M75,150 C33.5786438,150 0,116.421356 0,75 C0,33.5786438 33.5786438,0 75,0 C116.421356,0 150,33.5786438 150,75 C150,116.421356 116.421356,150 75,150 Z M48.501,109 L87.392,109 C91.534,109 94.892,105.642 94.892,101.5 C94.892,97.358 91.534,94 87.392,94 L66.608,94 L106.837,53.771 C109.766,50.842 109.766,46.093 106.837,43.164 C103.908,40.235 99.159,40.235 96.23,43.164 L56.001,83.394 L56,62.61 C56,58.468 52.642,55.11 48.5,55.11 C44.358,55.11 41,58.468 41,62.61 L41,101.5 C41.001,105.643 44.359,109 48.501,109 Z"></path>
-              </svg>
-            </div>
-          </div>
-          <div class="folder who">
-            <?php $contributorsArchive = new WP_Query( 
-                              array(
-                                'posts_per_page' => -1, 
-                                'post_type' => 'contributor', 
-                              )
-                             ); ?>
-
-            <?php if ( $contributorsArchive->have_posts() ) : ?>
-
-                <?php while ( $contributorsArchive->have_posts() ) : $contributorsArchive->the_post(); ?>
-
-                <div class="person" id=<?php echo( basename(get_permalink()) ); ?>  style="background-image: url(<?php the_post_thumbnail_url('full') ?>);">
-                  <div class="person-infoLayer person-layer">
-                    <div class="name"><?php the_title(); ?></div>
-                    <div class="position"><?php the_field('title'); ?></div>
-                  </div>
-                  <div id="bioText"><?php the_field('bio'); ?></div>
-                </div>
-                    <?php wp_reset_postdata(); ?>
-            <?php endwhile; ?>
-
-            <?php endif; ?>
-
-            <div class="folder-footer">We make videos good, good, good</div>
-            <div class="closeContact">  
-              <svg viewBox="0 0 150 150">
-                <path  id="downleft-arrow" fill="#000000" d="M75,150 C33.5786438,150 0,116.421356 0,75 C0,33.5786438 33.5786438,0 75,0 C116.421356,0 150,33.5786438 150,75 C150,116.421356 116.421356,150 75,150 Z M48.501,109 L87.392,109 C91.534,109 94.892,105.642 94.892,101.5 C94.892,97.358 91.534,94 87.392,94 L66.608,94 L106.837,53.771 C109.766,50.842 109.766,46.093 106.837,43.164 C103.908,40.235 99.159,40.235 96.23,43.164 L56.001,83.394 L56,62.61 C56,58.468 52.642,55.11 48.5,55.11 C44.358,55.11 41,58.468 41,62.61 L41,101.5 C41.001,105.643 44.359,109 48.501,109 Z"></path>
-              </svg>
-            </div>
-          </div>
-          <div class="folder contact">
-            <div class="info">
-              <div class="stamp">
-                <svg viewBox="0 0 180 91">
-                    <defs>
-                        <rect id="path-1" x="10" y="20" width="60" height="60"></rect>
-                    </defs>
-                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g id="Contact---Contact" transform="translate(-132.000000, -209.000000)">
-                            <g id="CONTACT-PAGE" transform="translate(77.000000, 121.000000)">
-                                <g id="Stamp" transform="translate(55.000000, 90.000000)">
-                                    <rect id="Rectangle-2" fill="#C2B495" x="0" y="9" width="80" height="80"></rect>
-                                    <g id="Rectangle-2">
-                                        <use fill="#F33E42" fill-rule="evenodd" xlink:href="#path-1"></use>
-                                        <rect stroke="#979797" stroke-width="1" x="10.5" y="20.5" width="59" height="59"></rect>
-                                    </g>
-                                    <g id="Group-5" transform="translate(74.000000, 21.000000)" fill="#FFFFFF">
-                                        <path d="M0,12 L0,2.22044605e-16 C3.3137085,0 6,2.6862915 6,6 C6,9.3137085 3.3137085,12 0,12 Z" id="Combined-Shape" transform="translate(3.000000, 6.000000) rotate(180.000000) translate(-3.000000, -6.000000) "></path>
-                                        <path d="M0,27 L0,15 C3.3137085,15 6,17.6862915 6,21 C6,24.3137085 3.3137085,27 0,27 Z" id="Combined-Shape" transform="translate(3.000000, 21.000000) rotate(180.000000) translate(-3.000000, -21.000000) "></path>
-                                        <path d="M0,42 L0,30 C3.3137085,30 6,32.6862915 6,36 C6,39.3137085 3.3137085,42 0,42 Z" id="Combined-Shape" transform="translate(3.000000, 36.000000) rotate(180.000000) translate(-3.000000, -36.000000) "></path>
-                                        <path d="M0,56 L0,44 C3.3137085,44 6,46.6862915 6,50 C6,53.3137085 3.3137085,56 0,56 Z" id="Combined-Shape" transform="translate(3.000000, 50.000000) rotate(180.000000) translate(-3.000000, -50.000000) "></path>
-                                    </g>
-                                    <g id="Group-4" transform="translate(0.000000, 21.000000)" fill="#FFFFFF">
-                                        <path d="M0,12 L0,2.22044605e-16 C3.3137085,0 6,2.6862915 6,6 C6,9.3137085 3.3137085,12 0,12 Z" id="Combined-Shape" transform="translate(3.000000, 6.000000) rotate(360.000000) translate(-3.000000, -6.000000) "></path>
-                                        <path d="M0,27 L0,15 C3.3137085,15 6,17.6862915 6,21 C6,24.3137085 3.3137085,27 0,27 Z" id="Combined-Shape" transform="translate(3.000000, 21.000000) rotate(360.000000) translate(-3.000000, -21.000000) "></path>
-                                        <path d="M0,42 L0,30 C3.3137085,30 6,32.6862915 6,36 C6,39.3137085 3.3137085,42 0,42 Z" id="Combined-Shape" transform="translate(3.000000, 36.000000) rotate(360.000000) translate(-3.000000, -36.000000) "></path>
-                                        <path d="M0,56 L0,44 C3.3137085,44 6,46.6862915 6,50 C6,53.3137085 3.3137085,56 0,56 Z" id="Combined-Shape" transform="translate(3.000000, 50.000000) rotate(360.000000) translate(-3.000000, -50.000000) "></path>
-                                    </g>
-                                    <g id="Group-3" transform="translate(40.000000, 12.000000) rotate(90.000000) translate(-40.000000, -12.000000) translate(37.000000, -16.000000)" fill="#FFFFFF">
-                                        <path d="M0,12 L0,2.22044605e-16 C3.3137085,0 6,2.6862915 6,6 C6,9.3137085 3.3137085,12 0,12 Z" id="Combined-Shape" transform="translate(3.000000, 6.000000) rotate(360.000000) translate(-3.000000, -6.000000) "></path>
-                                        <path d="M0,27 L0,15 C3.3137085,15 6,17.6862915 6,21 C6,24.3137085 3.3137085,27 0,27 Z" id="Combined-Shape" transform="translate(3.000000, 21.000000) rotate(360.000000) translate(-3.000000, -21.000000) "></path>
-                                        <path d="M0,42 L0,30 C3.3137085,30 6,32.6862915 6,36 C6,39.3137085 3.3137085,42 0,42 Z" id="Combined-Shape" transform="translate(3.000000, 36.000000) rotate(360.000000) translate(-3.000000, -36.000000) "></path>
-                                        <path d="M0,56 L0,44 C3.3137085,44 6,46.6862915 6,50 C6,53.3137085 3.3137085,56 0,56 Z" id="Combined-Shape" transform="translate(3.000000, 50.000000) rotate(360.000000) translate(-3.000000, -50.000000) "></path>
-                                    </g>
-                                    <g id="Group-3" transform="translate(40.000000, 86.000000) scale(1, -1) rotate(90.000000) translate(-40.000000, -86.000000) translate(37.000000, 58.000000)" fill="#FFFFFF">
-                                        <path d="M0,12 L0,2.22044605e-16 C3.3137085,0 6,2.6862915 6,6 C6,9.3137085 3.3137085,12 0,12 Z" id="Combined-Shape" transform="translate(3.000000, 6.000000) rotate(360.000000) translate(-3.000000, -6.000000) "></path>
-                                        <path d="M0,27 L0,15 C3.3137085,15 6,17.6862915 6,21 C6,24.3137085 3.3137085,27 0,27 Z" id="Combined-Shape" transform="translate(3.000000, 21.000000) rotate(360.000000) translate(-3.000000, -21.000000) "></path>
-                                        <path d="M0,42 L0,30 C3.3137085,30 6,32.6862915 6,36 C6,39.3137085 3.3137085,42 0,42 Z" id="Combined-Shape" transform="translate(3.000000, 36.000000) rotate(360.000000) translate(-3.000000, -36.000000) "></path>
-                                        <path d="M0,56 L0,44 C3.3137085,44 6,46.6862915 6,50 C6,53.3137085 3.3137085,56 0,56 Z" id="Combined-Shape" transform="translate(3.000000, 50.000000) rotate(360.000000) translate(-3.000000, -50.000000) "></path>
-                                    </g>
-                                    <g id="Group-6" transform="translate(25.000000, 0.000000)" stroke="#272927">
-                                        <circle id="Oval-4" stroke-width="8" cx="35.5" cy="35.5" r="19.5"></circle>
-                                        <path d="M53.5,22.0987726 C53.5,22.0987726 70.5182968,13.2695096 83.8380428,16.1389582 C97.1577887,19.0084068 104.967539,33.787344 116.952382,33.787344 C128.937226,33.787344 152.046875,22.0987726 152.046875,22.0987726" id="Line" stroke-width="3" stroke-linecap="square"></path>
-                                        <path d="M53.5,28.4877726 C53.5,28.4877726 70.5182968,19.6585095 83.8380428,22.5279581 C97.1577887,25.3974067 104.967539,40.176344 116.952382,40.176344 C128.937226,40.176344 152.046875,28.4877726 152.046875,28.4877726" id="Line" stroke-width="3" stroke-linecap="square"></path>
-                                        <path d="M53.5,40.8767725 C53.5,40.8767725 70.5182968,32.0475095 83.8380428,34.9169581 C97.1577887,37.7864067 104.967539,52.565344 116.952382,52.565344 C128.937226,52.565344 152.046875,40.8767725 152.046875,40.8767725" id="Line" stroke-width="3" stroke-linecap="square"></path>
-                                        <path d="M53.5,49.8767725 C53.5,49.8767725 70.5182968,41.0475095 83.8380428,43.9169581 C97.1577887,46.7864067 104.967539,61.565344 116.952382,61.565344 C128.937226,61.565344 152.046875,49.8767725 152.046875,49.8767725" id="Line" stroke-width="3" stroke-linecap="square"></path>
-                                        <circle id="Oval-3" stroke-width="4" cx="35" cy="35" r="35"></circle>
-                                        <circle id="Oval-3" stroke-width="2" cx="35" cy="35" r="30"></circle>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </svg>
-              </div>
-                    <h2 class="bigger"><?php the_field("contact_paragraph"); ?></h2>
-                  <h4><?php the_field("email"); ?></h4>
-                  <h4><?php the_field("phone_number"); ?></h4> 
-                  <p class="tagline">We make videos good, good, <span class="underline">good</span>.</p>
-                  <div class="closeContact">  
-                    <svg viewBox="0 0 150 150">
-                      <path  id="downleft-arrow" fill="#000000" d="M75,150 C33.5786438,150 0,116.421356 0,75 C0,33.5786438 33.5786438,0 75,0 C116.421356,0 150,33.5786438 150,75 C150,116.421356 116.421356,150 75,150 Z M48.501,109 L87.392,109 C91.534,109 94.892,105.642 94.892,101.5 C94.892,97.358 91.534,94 87.392,94 L66.608,94 L106.837,53.771 C109.766,50.842 109.766,46.093 106.837,43.164 C103.908,40.235 99.159,40.235 96.23,43.164 L56.001,83.394 L56,62.61 C56,58.468 52.642,55.11 48.5,55.11 C44.358,55.11 41,58.468 41,62.61 L41,101.5 C41.001,105.643 44.359,109 48.501,109 Z"></path>
-                    </svg>
-                  </div>
-            </div>
-            <div class="contactForm"><?php echo do_shortcode( '[contact-form-7 id="42" title="The Contact Form"]' )?></div>
-          </div>
+        <h2 class="bold">Contact</h2>
+        <div class="card">
+        <div class="closeContact">  
+          <svg viewBox="0 0 16 20">
+            <path fill="#221E20" d="M13.7,2.3c-3.1-3.1-8.2-3.1-11.3,0s-3.1,8.2,0,11.3s8.2,3.1,11.3,0S16.8,5.5,13.7,2.3z M9.3,10.3L8,9l-1.3,1.3   c-0.3,0.3-0.7,0.3-1,0c-0.3-0.3-0.3-0.7,0-1L7,8L5.7,6.7c-0.3-0.3-0.3-0.7,0-1s0.7-0.3,1,0L8,7l1.3-1.3c0.3-0.3,0.7-0.3,1,0   c0.3,0.3,0.3,0.7,0,1L9,8l1.3,1.3c0.3,0.3,0.3,0.7,0,1C10.1,10.6,9.6,10.6,9.3,10.3z"/>
+            <!-- Created by Basufrom the Noun Project -->
+          </svg>
+        </div>
+          <p class="tagline">We make videos good, good, <span class="underline">good</span>.</p>
+          <h2 class="bigger"><?php the_field("contact_paragraph"); ?></h2>
+          <h4><?php the_field("email"); ?></h4>
+          <h4><?php the_field("phone_number"); ?></h4>
+          <a class="hello-button" href="mailto:info@hellovideoinc.com">"Say Hello"</a>
         </div>
       </section>
     </section>
@@ -508,80 +410,17 @@
         </svg>
       </div>
       <section id="videoPlayer">
-       <div id="videoControl">
+        <!-- <p>Click video to play. Click video to pause.</p> -->
         <div class="closePlayer">
-          <svg viewBox="0 0 150 150">
-            <path id="left-arrow" fill="#FFF" d="M75,150.00025 C33.5786438,150.00025 0,116.421606 0,75.00025 C0,33.5788938 33.5786438,0.00025 75,0.00025 C116.421356,0.00025 150,33.5788938 150,75.00025 C150,116.421606 116.421356,150.00025 75,150.00025 Z M32.196,80.304 L59.696,107.804 C62.625,110.733 67.374,110.733 70.303,107.804 C73.232,104.875 73.232,100.126 70.303,97.197 L55.607,82.501 L112.5,82.501 C116.642,82.501 120,79.143 120,75.001 C120,70.859 116.642,67.501 112.5,67.501 L55.607,67.501 L70.303,52.804 C73.232,49.875 73.232,45.126 70.303,42.197 C67.374,39.268 62.625,39.268 59.696,42.197 L32.196,69.697 C29.267,72.626 29.267,77.375 32.196,80.304 Z"></path>
-        </svg>
+          <svg viewBox="0 0 100 125">
+            <g transform="translate(0,-952.36218)">
+              <path d="m 10.99999,1002.3622 c 0,21.539 17.4609,39 39,39 21.53912,0 39.00002,-17.461 39.00002,-39 0,-21.53892 -17.4609,-39.00002 -39.00002,-39.00002 -21.5391,0 -39,17.46111 -39,39.00002 z m 13,0 c 0.01,-0.4696 0.092,-0.9139 0.5625,-1.375 l 16,-17.00002 c 0.7356,-0.7842 2.0552,-0.83769 2.8437,-0.062 0.7468,0.7343 0.7825,2.0517 0.062,2.8125 l -12.8437,13.62451 43.37502,0 c 1.10459,0 2,0.8954 2,2 0,1.1046 -0.89541,2 -2,2 l -43.37502,0 12.8437,13.625 c 0.72,0.7609 0.7161,2.1431 -0.062,2.8438 -0.8709,0.7838 -2.0967,0.6785 -2.8437,-0.094 l -16,-17 c -0.284,-0.2982 -0.5625,-0.9122 -0.5625,-1.375 z"/>
+            </g>  
+          </svg><!-- Created by unlimicon from the Noun Project -->
         </div>
-        <div class="reel" id="reelControl">
+        <div id="vimeoWrap" class="videoWrapper">
           <?php the_field("vimeo_link"); ?>
         </div>
-        <section class="featuredWorks">
-          <div class="videoSectionLabels">
-            <div class="labelHalf">
-               <div class="arrowUp-svg">
-                <svg id="arrowUp" viewBox="0 0 30 71">
-                  <g transform="translate(-459.000000, -206.000000)">
-                      <path d="M506.84853,225.945073 C504.08053,236.504073 496.228124,250.057844 485.922124,253.768844 C476.688124,257.094844 454.17253,254.237073 452.09053,241.015073 C451.85253,239.502073 449.54753,239.660073 449.19753,241.015073 C448.13353,245.139073 446.92853,249.224073 445.86453,253.348073 C446.82853,253.614073 447.79253,253.880073 448.75753,254.146073 C449.52853,249.936073 450.67253,245.849073 452.09053,241.813073 C451.47553,242.162073 450.86053,242.511073 450.24553,242.860073 C453.90053,243.791073 457.66153,244.338073 461.24553,245.527073 C463.08753,246.138073 463.87053,243.240073 462.04353,242.634073 C458.45953,241.446073 454.69753,240.898073 451.04353,239.967073 C450.20953,239.755073 449.47353,240.232073 449.19853,241.014073 C447.77953,245.050073 446.63653,249.138073 445.86553,253.347073 C445.52153,255.222073 448.26853,256.042073 448.75853,254.145073 C449.82253,250.021073 451.02753,245.936073 452.09153,241.812073 L449.19853,241.812073 C451.46853,256.235073 473.360772,260.265579 483.942772,258.013579 C496.271772,255.389579 504.86853,240.800073 508.99453,229.168073 C509.699331,227.180949 509.9669,225.55969 509.510338,224.465706 C509.053777,223.371721 507.670012,222.810913 506.84853,225.945073 Z"  transform="translate(477.786005, 241.098900) scale(-1, -1) rotate(-69.000000) translate(-477.786005, -241.098900) "></path>
-                  </g>
-                </svg>
-              </div>
-              <h2>Our Reel</h2>
-            </div>
-            <div class=labelHalf>
-              <h2>Our Work</h2>
-              <div class="arrowDown-svg">
-                <svg id="arrowDown"  viewBox="0 0 30 71" >
-                  <g transform="translate(-518.000000, -208.000000)" >
-                      <path d="M558.84853,228.945073 C556.08053,239.504073 548.228124,253.057844 537.922124,256.768844 C528.688124,260.094844 506.17253,257.237073 504.09053,244.015073 C503.85253,242.502073 501.54753,242.660073 501.19753,244.015073 C500.13353,248.139073 498.92853,252.224073 497.86453,256.348073 C498.82853,256.614073 499.79253,256.880073 500.75753,257.146073 C501.52853,252.936073 502.67253,248.849073 504.09053,244.813073 C503.47553,245.162073 502.86053,245.511073 502.24553,245.860073 C505.90053,246.791073 509.66153,247.338073 513.24553,248.527073 C515.08753,249.138073 515.87053,246.240073 514.04353,245.634073 C510.45953,244.446073 506.69753,243.898073 503.04353,242.967073 C502.20953,242.755073 501.47353,243.232073 501.19853,244.014073 C499.77953,248.050073 498.63653,252.138073 497.86553,256.347073 C497.52153,258.222073 500.26853,259.042073 500.75853,257.145073 C501.82253,253.021073 503.02753,248.936073 504.09153,244.812073 L501.19853,244.812073 C503.46853,259.235073 525.360772,263.265579 535.942772,261.013579 C548.271772,258.389579 556.86853,243.800073 560.99453,232.168073 C561.699331,230.180949 561.9669,228.55969 561.510338,227.465706 C561.053777,226.371721 559.670012,225.810913 558.84853,228.945073 Z" transform="translate(529.786005, 244.098900) rotate(-69.000000) translate(-529.786005, -244.098900) "></path>
-                </g>
-              </svg>
-              </div>
-            </div>
-          </div>
-      <?php
-      // The Query
-      $args = array(
-        'post_type' => 'featured_work',
-        'posts_per_page' => -1 ,
-      );
-      $featuredWork_query = new WP_Query( $args );
-
-      // The Loop
-      if ( $featuredWork_query->have_posts() ) { ?>
-        
-        <!-- <div class="featuredWorks-control"> -->
-        <div class="boxes">
-      <?php while ( $featuredWork_query->have_posts() ) {
-        $featuredWork_query->the_post(); ?>
-          <div  id=<?php echo( basename(get_permalink()) ); ?> 
-              class="box red" 
-              style="background-image: url(<?php the_post_thumbnail_url('full'); ?>"
-          >
-            <div class="featured-title"><?php the_title(); ?></div>
-            <div class="featured-director"> <?php the_field('director') ?> </div>
-            <div class="modal">
-                  <div class="closeModal">
-                    <svg viewBox="0 0 150 150">
-                       <path id="close-X" fill="#FFF" d="M75.517875,150 C34.0965187,150 0.517874984,116.421356 0.517874984,75 C0.517874984,33.5786438 34.0965187,0 75.517875,0 C116.939231,0 150.517875,33.5786438 150.517875,75 C150.517875,116.421356 116.939231,150 75.517875,150 Z M104.284,92.677 L86.607,75 L104.285,57.322 C107.214,54.393 107.215,49.645 104.285,46.715 C101.356,43.786 96.607,43.786 93.678,46.715 L76,64.393 L58.322,46.715 C55.393,43.786 50.644,43.786 47.715,46.715 C44.785,49.645 44.786,54.393 47.715,57.322 L65.393,75 L47.716,92.677 C44.786,95.607 44.787,100.355 47.716,103.284 C50.646,106.214 55.393,106.214 58.323,103.284 L76,85.606 L93.678,103.284 C96.608,106.214 101.355,106.214 104.285,103.284 C107.213,100.355 107.214,95.607 104.284,92.677 Z"></path>
-                  </svg>
-                  </div>
-                  <div id="vimeoWrap" class="videoWrapper">
-                    <?php the_field("vimeo_link"); ?>
-                  </div>
-              </div> <!-- end of modal -->
-          </div> <!-- end of box --> 
-        <?php } ?>
-          </div> <!-- end of boxes -->
-        <?php 
-        /* Restore original Post Data */
-        wp_reset_postdata();
-      } else {
-        // no posts found
-      }
-      ?>
-        </div> <!-- end of .videoTrial -->
       </section>
     </section>
   </main>
