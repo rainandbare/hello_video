@@ -126,14 +126,13 @@ section#videoPlayer{
 	height: 100%;
 }
 section#contactInfo{
-	padding: 200px 0px;
-	width: 70%;
+	padding: 10px;
 	margin: 0 auto;
 	h2.bold{
 		color: $orange;
 		padding-bottom: 20px;
 		text-align: center;
-		font-size: 30px;
+		font-size: 45px;
 		text-shadow:0px 0px 0 #221E20,
 					1px 1px 0 #221E20,
 					2px 2px 0 #221E20,
@@ -149,50 +148,38 @@ section#contactInfo{
 					12px 12px 0 #221E20;
 		}
 }
-div.card{
+div.folders{
 	background: white;
-	box-shadow:0px 0px 0 #221E20,
-					1px 1px 0 #221E20,
-					2px 2px 0 #221E20,
-					3px 3px 0 #221E20,
-					4px 4px 0 #221E20,
-					5px 5px 0 #221E20,
-					6px 6px 0 #221E20,
-					7px 7px 0 #221E20,
-					8px 8px 0 #221E20,
-					9px 9px 0 #221E20,
-					10px 10px 0 #221E20,
-					11px 11px 0 #221E20,
-					12px 12px 0 #221E20,
-					13px 13px 0 #221E20,
-					14px 14px 0 #221E20,
-					15px 15px 0 #221E20,
-					16px 16px 0 #221E20,
-					17px 17px 0 #221E20,
-					18px 18px 0 #221E20,
-					19px 19px 0 #221E20, 
-					20px 20px 0 #221E20;
-	padding: 20px;
+	padding: 40px 20px;
 	text-align: center;
+}
+div.info{
+	display: flex;
+    flex-flow: column;
 }
 p.tagline{
 		font-family: $handwritten;
 		color: $red;
 		font-weight: 700;
-		font-size: 26px;
+		font-size: 37px;
 		text-align: center;
-		padding-top: 10px;
-		padding-bottom: 25px;
+		padding-top: 40px;
+		padding-bottom: 20px;
+		order: -1;
+}
+h4{
+	font-size: 22px;
 }
 span.underline{
 		border-bottom: 1px solid red;
 }
 h2.bigger{
-	font-size: 24px;
-	padding-bottom: 20px; 
-		br:nth-of-type(2n+1){
-			display: none;
-		}
+	// font-size: 24px;
+	// padding-bottom: 20px; 
+	// 	br:nth-of-type(2n+1){
+	// 		display: none;
+	// 	}
+	display: none;
 }
 a.hello-button{
 	font-family: $script;
@@ -213,6 +200,7 @@ footer {
 	width: 100%;
 	height: 50px;
 	background: #221E20;
+	z-index: 3;
 	ul{
 		display: flex;
 		flex-flow: row nowrap;
@@ -238,7 +226,201 @@ footer {
 		width: 110%;
 	}
 }
+
+
+.boxes{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
 }
+
+.box{
+	width: 400px;
+	margin: 10px;
+	border: 0px black solid;
+	transition: all 0.5s ease-in-out;
+	background-size: cover;
+}
+
+.box:hover{
+}
+
+div.closeModal{
+	display: none;
+}
+
+div.modal{
+	opacity: 0;
+}
+
+div.reel{
+	text-align: center;
+	position: relative;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+}
+
+div.reel iframe{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+div.photo{
+	width: 33.333%;
+	height: 250px;
+}
+.featuredWorks h2, 
+.mobileReelLabel h2, 
+h2.mobileWorksLabel {
+	color: white;
+    font-size: 25px;
+    font-family: Emperors Scrawl;
+    text-transform: lowercase;
+    padding: 26px 0 8px;
+    text-align: center;
+}
+.mobileReelLabel, .labelHalf{
+	display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+.arrowUp-svg, .arrowDown-svg{
+	width: 20px;
+	fill: white;
+	transform: rotate(90deg);
+    padding: 0px 3px;
+}
+.arrowDown-svg{
+	transform: scale(-1,1) rotate(270deg);
+    order: -1;
+    margin-right: 35px;
+}
+
+.mobileHide{
+	display: none;
+}
+
+.featured-title, .featured-director{
+	display: none;
+}
+
+.handwritten {
+	font-family: $script;
+	font-size: 25px;
+	color: $red;
+	text-align: center;
+}
+.regText{
+	font-size: 22px;
+	font-family: $reg;
+	padding-top: 18px;
+	padding-bottom: 7px;
+	text-align: left;
+}
+#bioText{
+	display: none;
+}
+#bioText.displayBio{
+    display: block;
+    background: black;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 10px;
+    .regText {
+    	color: white;
+    }
+}
+
+
+.folder-footer{
+	display: none;
+}
+
+.folder.who{
+	display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.folder.contact{
+	
+}
+
+// --------------------- WHO FOLDER --------------------------
+$borderWidth: 4px;
+$padding: 15px;
+
+.person{
+	position: relative;
+	width: 300px;
+	height: 365px;
+	border: $borderWidth black solid;
+	background-size: cover;
+	margin: 20px auto;
+}
+
+.person-infoLayer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background: white;
+	padding: $padding;
+	text-align: left;
+	z-index: 2;
+	div.name{
+	    text-transform: uppercase;
+	    font-family: $block;
+	    font-size: 30px;
+	    text-decoration: underline;
+	    padding-bottom: $padding;
+	}
+	div.position{
+		text-transform: lowercase;
+		font-family: $script;
+		color: $orange;
+		font-size: 20px;
+	}
+
+}
+
+.stamp{
+	display: none;
+}
+
+
+///CONTACT FORM
+
+div.contactForm{
+	input, textarea{
+		font-size: 18px;
+		font-family: $reg;
+		padding: 12px 15px;
+		background: #BABEC5;
+		color: white;
+		border: none;
+		outline: none;
+		width: 100%;
+	}
+	textarea{
+		resize: none;
+		height: 175px;
+	}
+	input[type="submit"]{
+		margin-top: 20px;
+		padding: 14px 40px 12px;
+		font-size: 28px;
+		font-family: $script;
+		background: $red;
+		border: 4px solid #272927;
+	}
+}
+
+}
+
 
 @media 	(min-width: 600px)
 		and (max-width: 1100px)  {
@@ -306,6 +488,7 @@ footer {
 	}
 }
 
+
 @media 	(min-width: 600px)
 		and (max-width: 1100px)
 		and (orientation: landscape)  {
@@ -342,6 +525,8 @@ footer {
 
 }
 
+
+
 @media 	(min-width: 425px)
 		and (max-width: 600px)
 		and (orientation: portrait)  {
@@ -353,11 +538,17 @@ footer {
 		font-size: 20px;
 	}
 }
-@media (max-width: 450px){
+@media (max-width: 430px){
 	h2.bigger{
 		br:nth-of-type(2n+1){
 			display: block;
 		}
 	}
-
+	p.tagline{
+		font-size: 30px;
+	}
+	h4{
+		font-size: 18px;
+	}
 }
+

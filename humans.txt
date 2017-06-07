@@ -10,7 +10,8 @@
 
 /* THANKS */
   WordPress starter theme from HackerYou - http://hackeryou.com
-  SVGs - arrows and x's by Jamison Wieser
+  SVGs - arrows and x's by Jamison Wieser, coin by Eugene Dobrik, phone and video cassette and logo design by L.G. Greene 
+
 
 
 /* SITE */

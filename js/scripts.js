@@ -13,15 +13,18 @@ $(function(){
 app.init = function(){
 	console.log("its working");
 	app.responsive();
+	app.bioClick();
 	app.handwritting();
 	app.fullMenu();
 	app.contactGo();
 	app.reelGo();
 	app.contactAnimation();
 	app.resizeWindow();
-	app.folderControl();
+	app.folderControl();	
 	app.openVideoModal();
 }
+
+	
 
 app.responsive = function(){
 	var w = $( window ).width();
@@ -31,10 +34,20 @@ app.responsive = function(){
 	} else {
 		console.log("it is not a mobile device");		
 	}
+
 	function addPop(){
 		$("header#teaser #logo button").addClass('pop-out');
 		window.setTimeout(app.action(), 3000);
 		window.setTimeout(app.bounce, 2250);
+	}
+}
+
+app.bioClick = function(){
+	if (app.ismobile){
+		$('.person').on("click", function(){
+				var person = $(this);
+				person.find('#bioText').toggleClass('displayBio')
+		}); 
 	}
 }
 
@@ -65,26 +78,26 @@ app.action = function(){
 app.handwritting = function(){
 	if (!app.ismobile){
 
-	$('button#activateSubheader').on("click", function(){
-		app.action();
-		app.scrollReady = true;
-		if(!app.deactivateButton){
-			window.setTimeout(app.bounce, 2250);
-		}
-	});
+		$('button#activateSubheader').on("click", function(){
+			app.action();
+			app.scrollReady = true;
+			if(!app.deactivateButton){
+				window.setTimeout(app.bounce, 2250);
+			}
+		});
 	} else {
-		console.log("is mobile");
+		console.log("is the mobile");
 	}
 }
 
 app.fullMenu = function(){
-
 		$('button#activateFullMenu').on("click", function(){
 			$('header').addClass("inCorner");
 		});
 }
 
 app.bounce = function(){
+	console.log('bounce')
 	$(".arrow").addClass("display");
 	$("main").css("display", "flex");
 	$("footer").addClass("up");
@@ -246,20 +259,46 @@ app.contactAnimation = function(){
 			};
 }
 app.resizeWindow = function(){
-	if(!app.ismobile){
-		 $(window).resize(function() {
-        if(this.resizeTO) clearTimeout(this.resizeTO);
-        this.resizeTO = setTimeout(function() {
-            $(this).trigger('resizeEnd');
-        }, 400);
-    });
-	 $(window).bind('resizeEnd', function() {
-    // window hasn't changed size in 400ms
-    console.log("resized");
-    //reload window to include right screen size & animations
-    window.location.reload(true);
+	
+	//check what the before window width is
+	var beforeWidth = $(window).width();
+	//on window resize 
+	$(window).resize(function() {
+		//check what the after widow width was
+		var afterWidth = $(window).width();
+		console.log(beforeWidth, afterWidth);
+		if(beforeWidth >= 1100 && afterWidth <= 1100){
+			refreshWindow();
+		}
+		if(beforeWidth <= 1100 && afterWidth >= 1100){
+			refreshWindow();
+		}
+		beforeWidth = afterWidth;
 	});
-	}	
+	
+
+	function refreshWindow(){
+		 window.location.reload(true);
+	}
+	
+	//if the before witdth was greater or equal to 1100 and the after width was less than 1100
+	//then refresh the window
+
+
+
+	// if(!app.ismobile){
+	// 	 $(window).resize(function() {
+ //        if(this.resizeTO) clearTimeout(this.resizeTO);
+ //        this.resizeTO = setTimeout(function() {
+ //            $(this).trigger('resizeEnd');
+ //        }, 400);
+ //    });
+	//  $(window).bind('resizeEnd', function() {
+ //    // window hasn't changed size in 400ms
+ //    //reload window to include right screen size & animations
+ //    window.location.reload(true);
+	// });
+	// }	
 }
 
 app.folderControl = function(){
@@ -279,7 +318,7 @@ app.folderControl = function(){
 }
 
 app.makeBoxIntoCanvas = function(element){;
-	// console.dir(element);
+
 	var body = document.getElementById('videoControl');
 
 	var imageCanvas = document.createElement('canvas');
@@ -292,7 +331,7 @@ app.makeBoxIntoCanvas = function(element){;
 	lineCanvas.setAttribute("id", lineCanvasID);
 	var lineCanvasContext = lineCanvas.getContext('2d');
 
-	var pointLifetime = 2000;
+	var pointLifetime = 6000;
 	var points = [];
 	
 	start();
@@ -350,15 +389,15 @@ app.makeBoxIntoCanvas = function(element){;
 	 * This line is used to mask the original image.
 	 */
 	function drawLineCanvas() {
-	  var minimumLineWidth = 60;
-	  var maximumLineWidth = 200;
+	  var minimumLineWidth = 20;
+	  var maximumLineWidth = 40;
 	  var lineWidthRange = maximumLineWidth - minimumLineWidth;
 	  var maximumSpeed = 50;
 
 	  // lineCanvasContext.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
 	  lineCanvasContext.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
 	  lineCanvasContext.lineCap = 'round';
-	  lineCanvasContext.shadowBlur = 30;
+	  lineCanvasContext.shadowBlur = 2;
 	  lineCanvasContext.shadowColor = '#000';
 	  
 	  for (var i = 1; i < points.length; i++) {
@@ -422,7 +461,7 @@ app.makeBoxIntoCanvas = function(element){;
 
 	  imageCanvasContext.font = '32px Langdon';
 	  imageCanvasContext.textBaseline = 'top';
-	  imageCanvasContext.fillStyle = '#211D1F';
+	  imageCanvasContext.fillStyle = '#91868A';
 	  imageCanvasContext.fillRect(0, 0, width, height);
 	  imageCanvasContext.textAlign = "center";  
 	  imageCanvasContext.fillStyle = '#FFF';
@@ -438,6 +477,9 @@ app.makeBoxIntoCanvas = function(element){;
 	  imageCanvasContext.font = '25px Open Sans';
 	  imageCanvasContext.fillStyle = '#E48723';
 	  imageCanvasContext.fillText(director, imageCanvas.width/2, 140);
+	  // imageCanvasContext.font = '22px digital display tfb';
+	  // imageCanvasContext.fillStyle = '#548750';
+	  // imageCanvasContext.fillText("WATCH NOW", imageCanvas.width/2, 10);
 	  // imageCanvasContext.strokeStyle = "#fff";
 	  // imageCanvasContext.strokeRect(imageCanvas.width/2 - 150, 25, 300, 180);
 

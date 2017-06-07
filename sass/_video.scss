@@ -1,3 +1,5 @@
+@media only screen and (min-width:1100px){
+
 .boxes{
 	display: flex;
 	flex-flow: row wrap;
@@ -10,12 +12,15 @@
 	width: 400px;
 	height: 250px;
 	margin: 10px;
-	border: 0px black solid;
-	transition: all 0.5s ease-in-out;
+	border: 4px black solid;
+	transition: all 0.3s ease-in;
 	background-size: cover;
 }
-
 .box:hover{
+	border: 4px white solid;
+}
+.box{
+	cursor: url(http://localhost:8888/hello/wp-content/uploads/2017/06/Coin2.png) 4 19, pointer;
 }
 
 div.modal{
@@ -34,6 +39,7 @@ div.closeModal{
     left: 0;
     top: 0;
     z-index: 3;
+    cursor: pointer;
 }
 
 .showModal div.modal{
@@ -94,6 +100,8 @@ div.photo{
 
 
 
-.featured-title, .featured-director{
+.featured-title, .featured-director, .mobileReelLabel {
 	display: none;
 }
+}
+
