@@ -502,7 +502,7 @@ app.makeBioIntoCanvas = function(element){
 	lineCanvas.setAttribute("id", lineCanvasID);
 	var lineCanvasContext = lineCanvas.getContext('2d');
 
-	var pointLifetime = 2500;
+	var pointLifetime = 7000;
 	var points = [];
 
 
@@ -570,14 +570,14 @@ app.makeBioIntoCanvas = function(element){
 	 * This line is used to mask the original image.
 	 */
 	function drawLineCanvas() {
-	  var minimumLineWidth = 60;
-	  var maximumLineWidth = 150;
+	  var minimumLineWidth = 20;
+	  var maximumLineWidth = 40;
 	  var lineWidthRange = maximumLineWidth - minimumLineWidth;
-	  var maximumSpeed = 50;
+	  var maximumSpeed = 60;
 
 	  lineCanvasContext.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
 	  lineCanvasContext.lineCap = 'round';
-	  lineCanvasContext.shadowBlur = 30;
+	  lineCanvasContext.shadowBlur = 2;
 	  lineCanvasContext.shadowColor = '#000';
 	  
 	  for (var i = 1; i < points.length; i++) {
@@ -626,9 +626,9 @@ app.makeBioIntoCanvas = function(element){
 
 	  imageCanvasContext.font = '300 22px Open Sans';
 	  imageCanvasContext.textBaseline = 'top';
-	  imageCanvasContext.fillStyle = 'black';
+	  imageCanvasContext.fillStyle = '#BABEC5';
 	  imageCanvasContext.fillRect(0, 0, width, height);  
-	  imageCanvasContext.fillStyle = '#FFF';
+	  imageCanvasContext.fillStyle = '#221E20';
 	  //imageCanvasContext.fillText("Helloe esdkfjhsdfkj  dsfkjdhf sdfjhs dfkjh sd", 15, 15);
 
 	  function wrapText(context, text, x, y, maxWidth, lineHeight) {

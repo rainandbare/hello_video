@@ -19,8 +19,8 @@
 .box:hover{
 	border: 4px white solid;
 }
-.box{
-	cursor: url(images/Coin2.png) 4 19, pointer;
+.box, .person{
+	cursor: url(images/Coin.png) 4 19, pointer;
 }
 
 div.modal{
